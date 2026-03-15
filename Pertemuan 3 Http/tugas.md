@@ -1,31 +1,33 @@
-# Tugas Basic Express.js – Data Dummy API
+# Tugas Basic REST API dengan Express.js
 
 ## Deskripsi
 
-Pada tugas ini mahasiswa diminta membuat API sederhana menggunakan Node.js dan Express.js dengan menggunakan data dummy (array di dalam kode).
+Pada tugas ini mahasiswa diminta membuat **REST API sederhana** menggunakan Node.js dan Express.js dengan menggunakan **data dummy (array)** tanpa database.
 
-Tujuan tugas ini adalah agar mahasiswa memahami:
+Mahasiswa akan mempelajari konsep dasar:
 
-- konsep dasar server
-- routing pada Express
-- pengiriman data JSON
-- penggunaan parameter pada URL
+- Server Node.js
+- Routing pada Express
+- HTTP Method (GET, POST, PUT, DELETE)
+- Response JSON
+- Parameter pada URL
 
 ---
 
-## Ketentuan Umum
+# Ketentuan Umum
 
-1. Gunakan Node.js dan framework Express.js.
-2. Tidak diperbolehkan menggunakan database (gunakan data dummy berupa array).
-3. Project harus dapat dijalankan dengan perintah:
+1. Gunakan Node.js dan Express.js
+2. Tidak menggunakan database
+3. Data disimpan dalam array (data dummy)
+4. Server berjalan pada port **3000**
+5. Project harus bisa dijalankan dengan:
 
 ```
 npm install
 node app.js
 ```
 
-4. Server harus berjalan pada port **3000**.
-5. Struktur project minimal:
+Struktur project minimal:
 
 ```
 project-folder
@@ -37,25 +39,25 @@ project-folder
 
 ---
 
-## Data Dummy
+# Data Dummy Awal
 
-Gunakan data awal berikut:
+Gunakan data berikut sebagai data awal.
 
 ```javascript
-const students = [
+let students = [
   { id: 1, nama: "Andi", jurusan: "Informatika" },
   { id: 2, nama: "Budi", jurusan: "Sistem Informasi" },
   { id: 3, nama: "Citra", jurusan: "Teknik Komputer" },
 ];
 ```
 
-Mahasiswa boleh menambahkan data tambahan.
+Mahasiswa boleh menambahkan data lain.
 
 ---
 
-## Endpoint yang Harus Dibuat
+# Endpoint yang Harus Dibuat
 
-### 1. Home Endpoint
+## 1. Home Endpoint
 
 ```
 GET /
@@ -69,17 +71,17 @@ API Mahasiswa berjalan
 
 ---
 
-### 2. Menampilkan Semua Mahasiswa
+## 2. GET Semua Mahasiswa
 
 ```
 GET /students
 ```
 
-Response: menampilkan seluruh data mahasiswa dalam format JSON.
+Menampilkan semua data mahasiswa.
 
 ---
 
-### 3. Menampilkan Mahasiswa Berdasarkan ID
+## 3. GET Mahasiswa Berdasarkan ID
 
 ```
 GET /students/:id
@@ -91,9 +93,7 @@ Contoh:
 /students/1
 ```
 
-Response: menampilkan data mahasiswa sesuai id.
-
-Jika data tidak ditemukan, tampilkan pesan:
+Jika data tidak ada tampilkan:
 
 ```
 Mahasiswa tidak ditemukan
@@ -101,27 +101,67 @@ Mahasiswa tidak ditemukan
 
 ---
 
-## Tugas Tambahan
-
-Buat endpoint baru:
+## 4. POST Tambah Mahasiswa
 
 ```
-GET /students/jurusan/:jurusan
+POST /students
+```
+
+Body JSON:
+
+```json
+{
+  "nama": "Dewi",
+  "jurusan": "Informatika"
+}
+```
+
+Mahasiswa harus menambahkan data baru ke array.
+
+---
+
+## 5. PUT Update Mahasiswa
+
+```
+PUT /students/:id
 ```
 
 Contoh:
 
 ```
-/students/jurusan/Informatika
+PUT /students/1
 ```
 
-Endpoint tersebut harus menampilkan mahasiswa berdasarkan jurusan.
+Body JSON:
+
+```json
+{
+  "nama": "Andi Update",
+  "jurusan": "Informatika"
+}
+```
+
+Data mahasiswa dengan id tersebut harus diperbarui.
 
 ---
 
-## Output yang Diharapkan
+## 6. DELETE Mahasiswa
 
-Contoh response dari endpoint:
+```
+DELETE /students/:id
+```
+
+Contoh:
+
+```
+DELETE /students/2
+```
+
+Mahasiswa dengan id tersebut harus dihapus dari array.
+
+---
+
+# Contoh Response
 
 ```
 GET /students
@@ -144,27 +184,23 @@ GET /students
 
 ---
 
-## Penilaian
+# Penilaian
 
-| Kriteria                  | Nilai |
-| ------------------------- | ----- |
-| Server berjalan           | 20    |
-| Endpoint `/students`      | 20    |
-| Endpoint `/students/:id`  | 20    |
-| Endpoint tambahan jurusan | 20    |
-| Kerapihan kode            | 20    |
+| Kriteria        | Nilai |
+| --------------- | ----- |
+| Server berjalan | 15    |
+| Endpoint GET    | 20    |
+| Endpoint POST   | 20    |
+| Endpoint PUT    | 20    |
+| Endpoint DELETE | 20    |
+| Kerapihan kode  | 5     |
 
-Total Nilai: **100**
+Total: **100**
 
 ---
 
-## Cara Pengumpulan
+# Cara Pengumpulan
 
-1. Upload project ke GitHub.
-2. Pastikan project dapat dijalankan.
-3. Kirimkan link repository ke LMS atau Google Classroom.
-
-```
-
-Jika Anda ingin, saya juga bisa buatkan **README versi lebih profesional seperti yang biasa dipakai di GitHub (lengkap dengan badge, API table, dan contoh response)** sehingga terlihat seperti **project backend sungguhan untuk mahasiswa IT.
-```
+1. Upload project ke GitHub
+2. Pastikan project bisa dijalankan
+3. Kirim link repository
