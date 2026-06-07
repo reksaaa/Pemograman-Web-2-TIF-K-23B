@@ -1,4 +1,4 @@
-export default function Login() {
+export default function Login(props) {
   return (
     <div className="login-wrapper">
       <div className="login-card">
@@ -100,7 +100,11 @@ export default function Login() {
             </a>
           </div>
 
-          <button type="submit" className="btn-primary">
+          <button
+            type="submit"
+            className="btn-primary"
+            onClick={() => props.setIsLoggedIn(true)}
+          >
             Sign in
           </button>
         </form>

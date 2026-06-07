@@ -1,10 +1,10 @@
+import { useState } from "react";
 import Card from "./Card";
 import Login from "./Login";
 import { artist } from "./artist";
 
-let isLoggedIn = true;
-
 export default function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <div className="app-container">
       {/* Decorative Glowing Blobs */}
@@ -14,7 +14,7 @@ export default function App() {
       </div>
 
       {!isLoggedIn ? (
-        <Login />
+        <Login setIsLoggedIn={setIsLoggedIn} />
       ) : (
         <div className="dashboard-container">
           {/* Header */}
@@ -25,7 +25,9 @@ export default function App() {
                 <p>Premium Listener</p>
               </div>
             </div>
-            <button className="btn-logout">Logout</button>
+            <button className="btn-logout" onClick={() => setIsLoggedIn(false)}>
+              Logout
+            </button>
           </header>
 
           {/* Title and Intro */}
